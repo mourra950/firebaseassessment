@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'firebase.dart';
 
@@ -35,6 +36,13 @@ class _SignInState extends State<SignIn> {
 
   Future<Object?> gotomainpage() =>
       Navigator.pushReplacementNamed(context, '/MainPage');
+  @override
+  void initState() {
+    super.initState();
+    if (FirebaseAuth.instance.currentUser != null) {
+      print('someone is already logged in');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +85,13 @@ class _SignInState extends State<SignIn> {
                     _signin();
                   },
                   child: Text("Submit"),
-                )
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.restorablePushNamed(context, './SignUp');
+                  },
+                  child: Text('Sign Up'),
+                ),
               ],
             ),
           ),

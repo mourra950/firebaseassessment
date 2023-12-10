@@ -98,7 +98,13 @@ class _SignUpState extends State<SignUp> {
                     _signup();
                   },
                   child: Text("Submit"),
-                )
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.restorablePushNamed(context, './Sign In');
+                  },
+                  child: Text('Sign In'),
+                ),
               ],
             ),
           ),

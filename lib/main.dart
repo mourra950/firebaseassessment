@@ -1,8 +1,8 @@
 import 'package:firebaseassessment/SignUp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'firebase.dart';
 import 'AddPage.dart';
 import 'Mainpage.dart';
 import 'SignIn.dart';
@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: '/SignIn',
+      initialRoute:
+          (FirebaseAuth.instance.currentUser != null) ? '/MainPage' : '/SignIn',
       routes: {
         '/AddPage': (context) => const AddPage(),
         '/SignIn': (context) => const SignIn(),

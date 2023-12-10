@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebaseassessment/firebase.dart';
 import 'package:flutter/material.dart';
 import 'Todo.dart';
 
@@ -28,6 +30,7 @@ class _mainPageState extends State<mainPage> {
 
   @override
   void initState() {
+    FBase.userhandler = FirebaseAuth.instance.currentUser!;
     Todo.readcards();
     updatelist();
     super.initState();
